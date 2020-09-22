@@ -1,5 +1,7 @@
 """ All Spicetify related stuff """
 import subprocess
+import os
+import zipfile
 
 
 class SpicetifyClient:
@@ -8,6 +10,11 @@ class SpicetifyClient:
     def __init__(self):
         if not self.spicetify_is_installed():
             self.install_spicetify()
+        if not os.listdir(os.path.join(os.getenv("USERPROFILE"), ".spicetify", "Themes")):
+            print("Installing themes")
+            self.install_themes()
+        else:
+            print("Themes already installed")
 
     def spicetify_is_installed(self):
         """Checks if Spicetify is already installed or not and
@@ -36,3 +43,14 @@ class SpicetifyClient:
         subprocess.run(["spicetify", "backup", "apply"], check=True)
         # Only for developers
         # subprocess.run(["spicetify", "enable-devtool"], check=True)
+
+    def install_themes(self):
+        """ Extracts the themes.zip containing all themes to the 'Themes'
+        directory in the installed spicetify folder """
+        themes_zip = os.path.join(os.getcwd(), "app", "Themes.zip")
+
+        user_profile = os.getenv("USERPROFILE")
+        spicetify_themes_folder = os.path.join(user_profile, ".spicetify", "Themes")
+
+        with zipfile.ZipFile(themes_zip, "r") as zip_file:
+            zip_file.extractall(spicetify_themes_folder)
