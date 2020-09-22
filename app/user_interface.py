@@ -25,8 +25,7 @@ class MainFrame(wx.Frame):
 
         left_sizer.Add((-1, 16))
 
-        theme_manager = ThemeManager()
-        theme_names = theme_manager.theme_names
+        theme_names = ThemeManager.theme_names
         self.theme_list = wx.ListBox(
             panel, choices=theme_names, style=wx.LB_SINGLE, size=(185, 250)
         )
