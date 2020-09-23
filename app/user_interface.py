@@ -42,7 +42,7 @@ class MainFrame(wx.Frame):
 
         self.image_names = []
         for theme in theme_names:
-            image_path = os.path.join("app", "images", f"{theme}.png")
+            image_path = os.path.join("res", "images", f"{theme}.png")
             self.image_names.append(image_path)
         image = wx.Image(self.image_names[0], type=wx.BITMAP_TYPE_ANY)
         self.image_control = wx.StaticBitmap(panel, bitmap=wx.Bitmap(image))

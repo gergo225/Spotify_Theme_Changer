@@ -47,7 +47,7 @@ class SpicetifyClient:
     def install_themes(self):
         """Extracts the themes.zip containing all themes to the 'Themes'
         directory in the installed spicetify folder"""
-        themes_zip = os.path.join(os.getcwd(), "app", "Themes.zip")
+        themes_zip = os.path.join("res", "Themes.zip")
 
         user_profile = os.getenv("USERPROFILE")
         spicetify_themes_folder = os.path.join(user_profile, ".spicetify", "Themes")
