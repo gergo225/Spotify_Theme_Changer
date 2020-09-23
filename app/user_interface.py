@@ -62,6 +62,7 @@ class MainFrame(wx.Frame):
             image_file = self.image_names[selection_index]
             new_image = wx.Image(image_file, type=wx.BITMAP_TYPE_ANY)
             self.image_control.SetBitmap(wx.Bitmap(new_image))
+            self.Refresh()
 
     def on_apply_pressed(self, _):
         """Applies selected theme"""
