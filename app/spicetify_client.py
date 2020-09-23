@@ -55,7 +55,8 @@ class SpicetifyClient:
         with zipfile.ZipFile(themes_zip, "r") as zip_file:
             zip_file.extractall(spicetify_themes_folder)
 
-    def apply_theme(self, theme_name):
+    @staticmethod
+    def apply_theme(theme_name):
         """Apply the theme named 'theme_name'. This must be
         from the theme names list (in ThemeManager)"""
         theme = ThemeManager.get_theme_code(theme_name)
